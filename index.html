@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESP CAM</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="svg-inject.min.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <button id="settings">
+          <img src="icons/sliders.svg" onload="SVGInject(this)" />
+
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </button>
+
+        <button id="server">
+          <img src="icons/server.svg" onload="SVGInject(this)" />
+        </button>
+      </header>
+
+      <div class="wrapper">
+        <div class="missingServer">
+          <h1>Please Enter a Server Address</h1>
+        </div>
+
+        <div class="loading">
+          <h1>Loading...</h1>
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="regions"></div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
