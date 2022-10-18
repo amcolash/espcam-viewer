@@ -12,29 +12,20 @@
   <body>
     <div class="app">
       <header>
-        <button id="settings">
-          <img src="icons/sliders.svg" onload="SVGInject(this)" />
-
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+        <button id="pause">
+          <img src="icons/pause.svg" onload="SVGInject(this)" />
         </button>
-
+        <button id="play">
+          <img src="icons/play.svg" onload="SVGInject(this)" />
+        </button>
         <button id="server">
           <img src="icons/server.svg" onload="SVGInject(this)" />
         </button>
       </header>
 
       <div class="wrapper">
-        <div class="missingServer">
-          <h1>Please Enter a Server Address</h1>
-        </div>
-
-        <div class="loading">
-          <h1>Loading...</h1>
+        <div class="status">
+          <h1 id="info">Loading...</h1>
           <div class="lds-ring">
             <div></div>
             <div></div>
@@ -43,7 +34,12 @@
           </div>
         </div>
 
-        <div class="regions"></div>
+        <div class="regions">
+          <h2>Garage</h2>
+          <img class="region" id="region1" onerror="this.style.display='none'" />
+          <h2>Front Door</h2>
+          <img class="region" id="region2" onerror="this.style.display='none'" />
+        </div>
       </div>
     </div>
 
