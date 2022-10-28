@@ -2,6 +2,7 @@ const settingKey = 'espcam-viewer';
 const serverKey = settingKey + '-server';
 
 let server;
+let autoOff;
 
 const statusEl = document.querySelector('.status');
 const infoEl = document.querySelector('#info');
@@ -10,7 +11,7 @@ const regionsEl = document.querySelector('.regions');
 const playButton = document.querySelector('#play');
 const pauseButton = document.querySelector('#pause');
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
   server = localStorage.getItem(serverKey);
 
   const serverButton = document.querySelector('#server');
@@ -22,8 +23,7 @@ window.addEventListener('load', async () => {
   if (!server) {
     setStatus('Error: Server has not been set up yet.');
   } else {
-    await updateSettings();
-    setInterval(updateImage, 60 * 1000);
+    updateSettings();
   }
 });
 
@@ -51,19 +51,33 @@ async function updateSettings() {
 }
 
 function play() {
+  let streamServer = server + ':81';
+  if (server.indexOf(':9090') !== -1) streamServer = server + '-stream';
+
   const regions = regionsEl.querySelectorAll('.region');
-  regions.forEach((r) => r.setAttribute('src', `${server}:81/stream`));
+  regions.forEach((r) => {
+    r.setAttribute('src', `${streamServer}/stream`);
+    r.style.filter = 'unset';
+  });
 
   playButton.style.display = 'none';
   pauseButton.style.display = 'flex';
+
+  if (autoOff) clearTimeout(autoOff);
+  autoOff = setTimeout(pause, 30 * 1000);
 }
 
 function pause() {
   const regions = regionsEl.querySelectorAll('.region');
-  regions.forEach((r) => r.setAttribute('src', undefined));
+  regions.forEach((r) => {
+    r.setAttribute('src', './icons/pause.svg');
+    r.style.filter = 'invert(1)';
+  });
 
   playButton.style.display = 'flex';
   pauseButton.style.display = 'none';
+
+  if (autoOff) clearTimeout(autoOff);
 }
 
 function updateServer() {
