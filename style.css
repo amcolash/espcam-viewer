@@ -23,6 +23,8 @@ header {
   justify-content: flex-end;
   text-align: center;
   margin-bottom: 1em;
+  position: absolute;
+  right: 1em;
 }
 
 header button:last-child {
