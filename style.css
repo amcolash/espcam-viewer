@@ -1,9 +1,15 @@
+:root {
+  --primary-color: #fff;
+  --secondary-color: #ccc;
+  --background-color: #21a7f3;
+}
+
 html {
   font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
   height: 100vh;
-  color: #ccc;
-  background: #333;
+  color: var(--primary-color);
+  background: var(--background-color);
 }
 
 body {
@@ -33,8 +39,8 @@ header button:last-child {
 button {
   display: flex;
   background: none;
-  color: #ccc;
-  border: 1px solid #aaa;
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
   padding: 0.4em;
   margin: 0.5em;
   border-radius: 0.35em;
@@ -69,9 +75,8 @@ button {
 
 .regions img {
   max-width: 225px;
-  max-height: 48%;
   object-fit: none;
-  transform: scale(2);
+  transform: scale(1.75);
   margin: 5em;
 }
 
@@ -80,11 +85,11 @@ button {
 }
 
 #region1 {
-  object-position: 0% 93%;
+  object-position: -1% 97%;
 }
 
 #region2 {
-  object-position: 100% 15%;
+  object-position: 100% 24%;
 }
 
 /* Loading spinner from https://loading.io/css/ */
@@ -101,10 +106,10 @@ button {
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid #fff;
+  border: 8px solid var(--primary-color);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--primary-color) transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;

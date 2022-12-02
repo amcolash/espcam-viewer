@@ -22,6 +22,7 @@ window.addEventListener('load', () => {
 
   if (!server) {
     setStatus('Error: Server has not been set up yet.');
+    document.querySelector('.lds-ring').style.display = 'none';
   } else {
     updateSettings();
   }
@@ -33,6 +34,7 @@ async function updateSettings() {
   const settings = [
     { var: 'led_intensity', val: 255 },
     { var: 'framesize', val: 10 },
+    { var: 'gainceiling', val: 2 },
   ];
 
   try {
@@ -60,11 +62,12 @@ function play() {
     r.style.filter = 'unset';
   });
 
+  regionsEl.style.display = 'flex';
   playButton.style.display = 'none';
   pauseButton.style.display = 'flex';
 
   if (autoOff) clearTimeout(autoOff);
-  autoOff = setTimeout(pause, 30 * 1000);
+  autoOff = setTimeout(pause, 60 * 1000);
 }
 
 function pause() {
@@ -74,6 +77,7 @@ function pause() {
     r.style.filter = 'invert(1)';
   });
 
+  regionsEl.style.display = 'none';
   playButton.style.display = 'flex';
   pauseButton.style.display = 'none';
 
