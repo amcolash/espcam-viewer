@@ -5,11 +5,11 @@
   "background_color": "#21a7f3",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/espcam-viewer/",
+  "start_url": "/espcam-viewer/",
   "icons": [
     {
-      "src": "/icons/camera.svg",
+      "src": "/espcam-viewer/icons/camera.svg",
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "maskable"
